@@ -6,11 +6,16 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 21:55:19 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/25 16:56:36 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/07/25 22:38:51 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	routin()
+{
+	
+}
 
 size_t  get_time(void)
 {
@@ -57,6 +62,7 @@ void    ft_init(t_program *program, char **arg)
 {
 	t_program	*program;
 	int          i;
+	t_philo	        philos[MAX_PHILOS];
 
 	i = 0;
 	program->dead_flag = 0;
@@ -70,4 +76,9 @@ void    ft_init(t_program *program, char **arg)
 		i++;
 	}
 	ft_init1(program, arg, program->num_of_philo);
+	i = 0;
+	while (i < program->num_of_philo)
+	{
+		pthread_create(&philos[i].thread, NULL, );
+	}
 }

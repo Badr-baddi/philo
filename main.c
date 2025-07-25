@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:21:19 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/25 19:24:10 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/07/25 22:18:06 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,5 @@ int	main(int ac, char **av)
 	if (!program.dead_flag)
 	{
 		ft_init(&program, &av[1]);
-		while (i < program.num_of_philo)
-		{
-			pthread_join(program.philos[i].thread, NULL);
-		}
 	}
 }
