@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 10:21:19 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/26 22:38:51 by bael-bad         ###   ########.fr       */
+/*   Created: 2025/07/26 16:50:58 by bael-bad          #+#    #+#             */
+/*   Updated: 2025/07/26 16:51:09 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int			nbr;
-	t_program	program;
-	int			i;
+	int	i;
 
+	if (!s2 || !s1)
+		return (1);
 	i = 0;
-	program.dead_flag = 0;
-	if (ac < 5 || ac > 6)
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 	{
-		printf("Usage: ./program nbr time1 time2 time3 [num_times_each_philo_must_eat]\n");
-		return (1);
+		i++;
 	}
-	nbr = ft_atoi(av[1]);
-	printf("%d\n", nbr);
-	if (!parss_1(nbr, av, ac))
-		return (1);
-	if (!program.dead_flag)
-	{
-		ft_init(&program, &av[1]);
-	}
+	return (s1[i] - s2[i]);
 }

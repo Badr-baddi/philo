@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_usleep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 10:21:19 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/26 22:38:51 by bael-bad         ###   ########.fr       */
+/*   Created: 2025/07/26 15:24:08 by bael-bad          #+#    #+#             */
+/*   Updated: 2025/07/26 15:28:03 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+size_t	get_current_time(void)
 {
-	int			nbr;
-	t_program	program;
-	int			i;
+	struct timeval	time;
 
-	i = 0;
-	program.dead_flag = 0;
-	if (ac < 5 || ac > 6)
-	{
-		printf("Usage: ./program nbr time1 time2 time3 [num_times_each_philo_must_eat]\n");
-		return (1);
-	}
-	nbr = ft_atoi(av[1]);
-	printf("%d\n", nbr);
-	if (!parss_1(nbr, av, ac))
-		return (1);
-	if (!program.dead_flag)
-	{
-		ft_init(&program, &av[1]);
-	}
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
 }

@@ -1,11 +1,10 @@
 NAME    = philo
 
-CC      = cc -Wall -Wextra -Werror #-g -fsanitize=address
+CC      = cc -Wall -Wextra #-Werror #-g -fsanitize=address
 
 #CFLAGS  = -I$(HOME)/.local/include
 
-SRCS    = main.c parss.c ft_atoi.c parss_1.c ft_init.c
-
+SRCS    = main.c parss.c ft_atoi.c parss_1.c ft_init.c ft_usleep.c ft_strcmp.c ft_think.c ft_eat.c ft_dream.c
 OBJS    = $(SRCS:.c=.o)
 
 HEADER = minishell.h

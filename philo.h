@@ -6,13 +6,14 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:22:52 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/25 16:46:46 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/07/26 22:54:30 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
@@ -20,6 +21,7 @@
 #include <sys/time.h>
 
 #define MAX_PHILOS 200
+typedef struct t_philo;
 
 typedef struct s_program
 {
@@ -58,6 +60,16 @@ int		parss(char *av);
 int		ft_atoi(const char *str);
 int 	parss_1(int nbr, char **av, int ac);
 void    ft_init(t_program *program, char **arg);
-void    ft_init1(t_program *program, char **av, int num_of_philo);
+void    ft_init1(t_program *program, char **av, int num_of_philo, t_philo *philos);
+int	ft_usleep(size_t milliseconds);
+void ft_message(char *msg, t_philo *philo, int id);
+int	is_dead(t_philo *philo);
+int	ft_strcmp(char *s1, char *s2);
+size_t  get_time(void);
+void    ft_think(t_philo *philo);
+void ft_eat(t_philo *philo);
+void    ft_sleep(t_philo *philo);
+void	ft_delay(t_philo *philo, size_t time_in_ms);
+void	*routin_philo(void *arg);
 
 #endif
