@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 17:26:11 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/26 20:15:07 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/07/27 20:37:34 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@
 // 	}
 // }
 
-void	ft_delay(t_philo *philo, size_t time_in_ms)
+void	ft_delay(size_t time_in_ms)
 {
 	size_t	start;
 
 	start = get_time();
 	while ((get_time() - start) < time_in_ms)
-		usleep(500);
+		usleep(100);
 }
 
 void    ft_sleep(t_philo *philo)
 {
     ft_message("is sleeping", philo, philo->id);
-    ft_delay(philo, philo->time_to_sleep);
+    ft_delay(philo->time_to_sleep);
 }
