@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_think.c                                         :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 19:37:13 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/27 20:37:17 by bael-bad         ###   ########.fr       */
+/*   Created: 2025/07/30 18:11:33 by bael-bad          #+#    #+#             */
+/*   Updated: 2025/07/30 18:12:21 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void    ft_think(t_philo *philo)
+void	destroy_mutexes(t_table *table)
 {
-    ft_message("is_thinking", philo, philo->id);
-    // if (philo->num_of_philos % 2)
-    //     ft_usleep(1);
+	int	i = 0;
+
+	pthread_mutex_destroy(&table->print_lock);
+	pthread_mutex_destroy(&table->death_lock);
+	while (i < table->total_diners)
+	{
+		pthread_mutex_destroy(&table->forks[i]);
+		i++;
+	}
 }
