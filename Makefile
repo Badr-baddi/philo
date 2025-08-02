@@ -1,6 +1,6 @@
 NAME    = philo
 
-CC      = cc -Wall -Wextra -Werror #-g -fsanitize=thread
+CC      = cc -Wall -Wextra -Werror -g -fsanitize=thread
 
 #CFLAGS  = -I$(HOME)/.local/include
 

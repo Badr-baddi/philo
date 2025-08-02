@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:11:33 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/07/30 18:12:21 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:15:40 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	destroy_mutexes(t_table *table)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	pthread_mutex_destroy(&table->print_lock);
 	pthread_mutex_destroy(&table->death_lock);
 	while (i < table->total_diners)
