@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:21:19 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/08/02 17:01:36 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/03 10:24:18 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	main(int ac, char **av)
 	nbr = ft_atoi(av[1]);
 	if (!parss_1(nbr, av, ac))
 		return (1);
+	init_tab1(&table, av);
 	if (init_mutexes(&table))
 		return (write(2, "Mutex init failed\n", 18), 1);
-	init_tab1(&table, av);
 	init_diners(&table);
 	if (start_threads(&table))
 		return (write(2, "Creation failed\n", 17), 1);
