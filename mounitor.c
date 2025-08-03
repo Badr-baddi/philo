@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:51:12 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/08/03 17:25:36 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:58:24 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static int	check_death_1(t_table *table, size_t time)
 	}
 	return (0);
 }
+
 static int	check_all_ate(t_table *table)
 {
 	if (all_ate_enough(table))
