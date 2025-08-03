@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 15:24:08 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/08/02 17:15:58 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:24:34 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@ size_t	get_current_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int	ft_usleep(size_t milliseconds, t_diner *diner)
+int	ft_usleep(size_t milliseconds, t_table *table)
 {
-	long long	start;
+	size_t	start;
+	size_t	elapsed;
 
-	if (!diner->table->someone_died)
-		return (1);
 	start = get_current_time();
-	while ((get_current_time() - start) < milliseconds)
+	while (1)
+	{
+		if (is_simulation_over(table))
+			return (1);
+		elapsed = get_current_time() - start;
+		if (elapsed >= milliseconds)
+			break ;
 		usleep(100);
+	}
 	return (0);
 }

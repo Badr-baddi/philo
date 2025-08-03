@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 11:45:04 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/08/02 17:19:05 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:23:27 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	print_message(t_diner *diner, const char *msg)
 {
-	pthread_mutex_lock(&diner->table->death_lock);
-	if (diner->table->someone_died)
+	if (is_simulation_over(diner->table))
+		return ;
+	pthread_mutex_lock(&diner->table->print_lock);
+	if (is_simulation_over(diner->table))
 	{
-		pthread_mutex_unlock(&diner->table->death_lock);
+		pthread_mutex_unlock(&diner->table->print_lock);
 		return ;
 	}
-	pthread_mutex_unlock(&diner->table->death_lock);
-	pthread_mutex_lock(&diner->table->print_lock);
 	printf("%lld %d %s\n", get_current_time() - diner->table->start_time,
 		diner->id, msg);
 	pthread_mutex_unlock(&diner->table->print_lock);

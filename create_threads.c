@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:14:48 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/08/02 17:11:49 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:26:42 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	start_threads(t_table *table)
 	table->start_time = get_current_time();
 	while (i < table->total_diners)
 	{
-		table->diners[i].last_meal_time = 0;
+		table->diners[i].last_meal_time = table->start_time;
 		if (pthread_create(&table->diners[i].thread,
 				NULL, routine, &table->diners[i]) != 0)
 			return (1);

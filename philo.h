@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:22:52 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/08/02 17:20:08 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:21:59 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_table
 	pthread_mutex_t		print_lock;
 	pthread_mutex_t		death_lock;
 	int					someone_died;
-	int					simulation_over;
 	t_diner				diners[MAX_DINERS];
 }	t_table;
 
@@ -55,7 +54,7 @@ int		main(int ac, char **av);
 int		parss(char *av);
 int		ft_atoi(const char *str);
 int		parss_1(int nbr, char **av, int ac);
-int		ft_usleep(size_t milliseconds, t_diner *diner);
+int		ft_usleep(size_t milliseconds, t_table *table);
 int		ft_strcmp(char *s1, char *s2);
 size_t	get_current_time(void);
 int		init_mutexes(t_table *table);
@@ -66,7 +65,7 @@ int		start_threads(t_table *table);
 void	join_threads(t_table *table);
 void	*monitor(void *arg);
 void	destroy_mutexes(t_table *table);
-int		check_death(t_table *table);
 void	print_message(t_diner *diner, const char *msg);
+int		is_simulation_over(t_table *table);
 
 #endif

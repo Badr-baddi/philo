@@ -6,7 +6,7 @@
 /*   By: bael-bad <bael-bad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:51:12 by bael-bad          #+#    #+#             */
-/*   Updated: 2025/08/02 17:28:50 by bael-bad         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:25:36 by bael-bad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static int	check_death_1(t_table *table, size_t time)
 	}
 	return (0);
 }
-
 static int	check_all_ate(t_table *table)
 {
 	if (all_ate_enough(table))
@@ -67,6 +66,16 @@ static int	check_all_ate(t_table *table)
 		return (1);
 	}
 	return (0);
+}
+
+int	is_simulation_over(t_table *table)
+{
+	int	ret;
+
+	pthread_mutex_lock(&table->death_lock);
+	ret = table->someone_died;
+	pthread_mutex_unlock(&table->death_lock);
+	return (ret);
 }
 
 void	*monitor(void *arg)
